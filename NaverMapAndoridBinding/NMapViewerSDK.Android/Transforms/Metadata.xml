@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+    <!-- This is a case of http://docs.xamarin.com/guides/android/advanced_topics/java_integration_overview/binding_a_java_library_(.jar)/#Problem_Duplicate_custom_EventArgs_types
+         Error CS0102: The type `Org.Java_websocket.WebsocketMessageEventArgs'
+         already contains a definition for `p0' -->
+    <remove-node path="/api/package[@name='com.nhn.android.maps']/interface[@name='NMapView.OnMapStateChangeSimpleListener']" />
+    <remove-node path="/api/package[@name='com.nhn.android.mapviewer.overlay']/interface[@name='NMapOverlayManager.OnCalloutOverlayViewListener']" />
+    <remove-node path="/api/package[@name='com.nhn.android.mapviewer.overlay']/interface[@name='NMapPOIdataOverlay.OnDragItemChangeListener']" />
+</metadata>
