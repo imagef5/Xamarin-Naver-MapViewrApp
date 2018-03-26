@@ -18,33 +18,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using Android.App;
-using Android.Widget;
+
 using Android.OS;
-using Com.Nhn.Android.Maps;
+using Android.Views;
 
-namespace NaverMapViewAndroidApp
+namespace NaverMapViewAndroidApp.Samples
 {
-    [Activity(Label = "NaverMapViewAndroidApp", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : NMapActivity //Activity
+    public class Fragment1 : NMapFragment
     {
-        private NMapView mMapView;// 지도 화면 View
-
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            mMapView = new NMapView(this);
-            SetContentView(mMapView);
-            mMapView.SetClientId(AppSetting.CLIENT_ID); // 클라이언트 아이디 값 설정
-            mMapView.Clickable = true;
-            mMapView.Enabled = true;
-            mMapView.Focusable = true; 
-            mMapView.FocusableInTouchMode = true;
-            mMapView.RequestFocus();
-            //var controller = mMapView.MapController;
-            //controller.SetZoomLevel(13);
+            // Create your fragment here
+        }
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            // Use this to return your custom view for this Fragment
+            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
+
+            return inflater.Inflate(Resource.Layout.Fragment1, container, false);
         }
     }
 }
-

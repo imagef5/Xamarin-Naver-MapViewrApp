@@ -19,32 +19,34 @@
  * limitations under the License.
  */
 using Android.App;
-using Android.Widget;
-using Android.OS;
-using Com.Nhn.Android.Maps;
 
-namespace NaverMapViewAndroidApp
+
+namespace NaverMapViewAndroidApp.Samples
 {
-    [Activity(Label = "NaverMapViewAndroidApp", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : NMapActivity //Activity
+    public class NMapViewerApplication : Application
     {
-        private NMapView mMapView;// 지도 화면 View
+        #region private member fileds area
+        static NMapViewerApplication instance;
+        #endregion
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        #region Property Area
+        public static NMapViewerApplication Instance
         {
-            base.OnCreate(savedInstanceState);
-
-            mMapView = new NMapView(this);
-            SetContentView(mMapView);
-            mMapView.SetClientId(AppSetting.CLIENT_ID); // 클라이언트 아이디 값 설정
-            mMapView.Clickable = true;
-            mMapView.Enabled = true;
-            mMapView.Focusable = true; 
-            mMapView.FocusableInTouchMode = true;
-            mMapView.RequestFocus();
-            //var controller = mMapView.MapController;
-            //controller.SetZoomLevel(13);
+            get
+            {
+                return instance;
+            }
         }
+        #endregion
+
+        #region override methods area
+        public override void OnCreate()
+        {
+
+            base.OnCreate();
+
+            instance = this;
+        }
+        #endregion
     }
 }
-
