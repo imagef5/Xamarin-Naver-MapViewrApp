@@ -70,6 +70,9 @@ namespace NMapViewerSDK.iOS
         void DidFailWithError(NGeoPoint location, NMapError error);
     }
 
+    //Empty Interface
+    interface IMMapReverseGeocoderDelegate { }
+
     // @interface NMapPathLineStyle : NSObject
     [BaseType(typeof(NSObject))]
     interface NMapPathLineStyle
@@ -264,7 +267,9 @@ namespace NMapViewerSDK.iOS
 
         // -(NMapCirclePoint *)addCirclePointLongitude:(double)longitude latitude:(double)latitude radius:(float)radius;
         [Export("addCirclePointLongitude:latitude:radius:")]
-        NMapCirclePoint AddCirclePointLongitude(double longitude, double latitude, float radius);
+        //NMapCirclePoint AddCirclePointLongitude(double longitude, double latitude, float radius);
+        NMapCirclePoint AddCirclePoint(double longitude, double latitude, float radius);
+
 
         // -(void)endCircleData;
         [Export("endCircleData")]
@@ -289,68 +294,114 @@ namespace NMapViewerSDK.iOS
         void SetMapEnlarged(bool mapEnlarged, bool mapHD);
 
         // @property (readonly, nonatomic) BOOL mapHD;
-        [Static, Export("mapHD")]
-        bool MapHD { get; }
+        [Export("mapHD")]
+        bool MapHD();// { get; }
 
         // @property (nonatomic) BOOL mapEnlarged;
-        [Static, Export("mapEnlarged")]
-        bool MapEnlarged { get; set; }
+        [Export("mapEnlarged")]
+        bool MapEnlarged();// { get; set; }
+
+        [Export("setMapEnlarged:")]
+        void SetMapEnlarged(bool mapEnlarged);
 
         // @property (nonatomic) int mapViewMode;
-        [Static, Export("mapViewMode")]
-        NMapViewMode MapViewMode { get; set; }
+        //[Static, Export("mapViewMode")]
+        //NMapViewMode MapViewMode { get; set; }
+        [Export("mapViewMode")]
+        NMapViewMode GetMapViewMode();
+
+        [Export("setMapViewMode:")]
+        void SetMapViewMode(NMapViewMode mapViewMode);
 
         // @property (nonatomic) BOOL mapViewTrafficMode;
-        [Static, Export("mapViewTrafficMode")]
-        bool MapViewTrafficMode { get; set; }
+        //[Static, Export("mapViewTrafficMode")]
+        //bool MapViewTrafficMode { get; set; }
+        [Export("mapViewTrafficMode")]
+        bool GetMapViewTrafficMode();
+
+        [Export("setMapViewTrafficMode:")]
+        void SetMapViewTrafficMode(bool mapViewTrafficMode);
 
         // @property (nonatomic) BOOL mapViewPanoramaMode;
-        [Static, Export("mapViewPanoramaMode")]
-        bool MapViewPanoramaMode { get; set; }
+        //[Static, Export("mapViewPanoramaMode")]
+        //bool MapViewPanoramaMode { get; set; }
+        [Export("mapViewPanoramaMode")]
+        bool GetMapViewPanoramaMode();// { get; set; }
+
+        [Export("setMapViewPanoramaMode:")]
+        void SetMapViewPanoramaMode(bool mapViewPanoramaMode);
 
         // @property (nonatomic) BOOL mapViewBicycleMode;
-        [Static, Export("mapViewBicycleMode")]
-        bool MapViewBicycleMode { get; set; }
+        //[Static, Export("mapViewBicycleMode")]
+        //bool MapViewBicycleMode { get; set; }
+        [Export("mapViewBicycleMode")]
+        bool GetMapViewBicycleMode();
+
+        [Export("setMapViewBicycleMode:")]
+        void SetMapViewBicycleMode(bool mapViewBicycleMode);
 
         // @property (nonatomic) BOOL mapViewCadastralMode;
-        [Static, Export("mapViewCadastralMode")]
-        bool MapViewCadastralMode { get; set; }
+        //[Static, Export("mapViewCadastralMode")]
+        //bool MapViewCadastralMode { get; set; }
+        [Export("mapViewCadastralMode")]
+        bool GetMapViewCadastralMode();
+
+        [Export("setMapViewCadastralMode:")]
+        void SetMapViewCadastralMode(bool mapViewCadastralMode);
 
         // @property (nonatomic) BOOL mapViewIndoorMode;
-        [Static, Export("mapViewIndoorMode")]
-        bool MapViewIndoorMode { get; set; }
+        //[Static, Export("mapViewIndoorMode")]
+        //bool MapViewIndoorMode { get; set; }
+        [Export("mapViewIndoorMode")]
+        bool GetMapViewIndoorMode();
+
+        [Export("setMapViewIndoorMode:")]
+        void SetMapViewIndoorMode(bool mapViewIndoorMode);
 
         // -(void)setBoundsMin:(NPoint *)bboxMinUtmk max:(NPoint *)bboxMaxUtmk;
-        [Static, Export("setBoundsMin:max:")]
+        [Export("setBoundsMin:max:")]
         //unsafe void SetBoundsMin(NPoint* bboxMinUtmk, NPoint* bboxMaxUtmk);
         void SetBoundsMin(NPoint bboxMinUtmk, NPoint bboxMaxUtmk);
 
         // @property (readonly, nonatomic) NGeoPoint mapCenter;
-        [Static, Export("mapCenter")]
-        NGeoPoint MapCenter { get; }
+        [Export("mapCenter")]
+        NGeoPoint MapCenter();// { get; }
 
         // -(NGeoPoint)mapBoundsCenter;
-        [Static, Export("mapBoundsCenter")]
-        NGeoPoint MapBoundsCenter { get; }
+        //[Static, Export("mapBoundsCenter")]
+        //NGeoPoint MapBoundsCenter { get; }
+        [Export("mapBoundsCenter")]
+        NGeoPoint MapBoundsCenter();
 
         // -(NPoint)mapBoundsCenterInUtmkX;
-        [Static, Export("mapBoundsCenterInUtmkX")]
-        NPoint MapBoundsCenterInUtmkX { get; }
+        //[Static, Export("mapBoundsCenterInUtmkX")]
+        //NPoint MapBoundsCenterInUtmkX { get; }
+        [Export("mapBoundsCenterInUtmkX")]
+        NPoint MapBoundsCenterInUtmkX();
 
         // @property (readonly, nonatomic) NPoint mapCenterInUtmkX;
-        [Static, Export("mapCenterInUtmkX")]
-        NPoint MapCenterInUtmkX { get; }
+        //[Static, Export("mapCenterInUtmkX")]
+        //NPoint MapCenterInUtmkX { get; }
+        [Export("mapCenterInUtmkX")]
+        NPoint MapCenterInUtmkX();
 
         // @property (nonatomic) CGRect boundsVisible;
-        [Static, Export("boundsVisible")]
-        CGRect BoundsVisible { get; set; }
+        //[Static, Export("boundsVisible")]
+        //CGRect BoundsVisible { get; set; }
+        [Export("boundsVisible")]
+        CGRect GetBoundsVisible();
+
+        [Export("setBoundsVisible:")]
+        void SetBoundsVisible(CGRect boundsVisible);
 
         // -(BOOL)hasVisibleBounds;
-        [Static, Export("hasVisibleBounds")]
-        bool HasVisibleBounds { get; }
+        //[Static, Export("hasVisibleBounds")]
+        //bool HasVisibleBounds { get; }
+        [Export("hasVisibleBounds")]
+        bool HasVisibleBounds();
 
         // -(void)setMapCenter:(NGeoPoint)location atLevel:(int)level panToVisibleCenter:(BOOL)panToVisibleCenter;
-        [Static, Export("setMapCenter:atLevel:panToVisibleCenter:")]
+        [Export("setMapCenter:atLevel:panToVisibleCenter:")]
         void SetMapCenter(NGeoPoint location, int level, bool panToVisibleCenter);
 
         // -(void)setMapCenter:(NGeoPoint)location atLevel:(int)level;
@@ -398,12 +449,16 @@ namespace NMapViewerSDK.iOS
         void SetZoomLevelMin(int minLevel, int maxLevel);
 
         // -(int)minZoomLevel;
-        [Static, Export("minZoomLevel")]
-        int MinZoomLevel { get; }
+        //[Static, Export("minZoomLevel")]
+        //int MinZoomLevel { get; }
+        [Export("minZoomLevel")]
+        int MinZoomLevel();
 
         // -(int)maxZoomLevel;
-        [Static, Export("maxZoomLevel")]
-        int MaxZoomLevel { get; }
+        //[Static, Export("maxZoomLevel")]
+        //int MaxZoomLevel { get; }
+        [Export("maxZoomLevel")]
+        int MaxZoomLevel();
 
         // -(void)setZoomEnabled:(BOOL)enabled;
         [Export("setZoomEnabled:")]
@@ -414,16 +469,20 @@ namespace NMapViewerSDK.iOS
         void SetPanEnabled(bool enabled);
 
         // -(int)zoomLevel;
-        [Static, Export("zoomLevel")]
-        int ZoomLevel { get; }
+        //[Static, Export("zoomLevel")]
+        //int ZoomLevel { get; }
+        [Export("zoomLevel")]
+        int ZoomLevel();
 
         // -(BOOL)setZoomLevel:(int)level;
         [Export("setZoomLevel:")]
         bool SetZoomLevel(int level);
 
         // -(NGRect)viewPort;
-        [Static, Export("viewPort")]
-        NGRect ViewPort { get; }
+        //[Static, Export("viewPort")]
+        //NGRect ViewPort { get; }
+        [Export("viewPort")]
+        NGRect ViewPort();
 
         // -(void)zoomIn;
         [Export("zoomIn")]
@@ -559,7 +618,7 @@ namespace NMapViewerSDK.iOS
 
         // -(void)setDelegate:(id<NMapLocationManagerDelegate>)delegate;
         [Export("setDelegate:")]
-        void SetDelegate(NMapLocationManagerDelegate @delegate);
+        void SetDelegate(INMapLocationManagerDelegate @delegate);
 
         // -(void)startContinuousLocationInfo;
         [Export("startContinuousLocationInfo")]
@@ -637,6 +696,9 @@ namespace NMapViewerSDK.iOS
         [Export("locationManager:didUpdateHeading:")]
         void DidUpdateHeading(NMapLocationManager locationManager, CLHeading heading);
     }
+
+    //Empty Interface
+    interface INMapLocationManagerDelegate { };
 
     // @interface NMapPOIitem : NSObject
     [BaseType(typeof(NSObject))]
@@ -770,7 +832,7 @@ namespace NMapViewerSDK.iOS
     }
 
     // @protocol NMapOverlayDelegate
-    [Protocol, Model]
+    [Protocol] //, Model
     interface NMapOverlayDelegate
     {
         // @required -(BOOL)isPersistent;
@@ -857,11 +919,11 @@ namespace NMapViewerSDK.iOS
         bool IsSpreadable { get; }
 
         [Wrap("WeakDelegate")]
-        NMapPOIdataOverlayDelegate Delegate { get; set; }
+        INMapPOIdataOverlayDelegate Delegate { get; set; }
 
         // @property (assign, nonatomic) id<NMapPOIdataOverlayDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        NSObject WeakDelegate { get; set; }
+        INMapPOIdataOverlayDelegate WeakDelegate { get; set; }
 
         // @property (assign, nonatomic) CALayer * overlayLayer;
         [Export("overlayLayer", ArgumentSemantic.Assign)]
@@ -885,19 +947,19 @@ namespace NMapViewerSDK.iOS
 
         // -(NMapPOIitem *)addPOIitemAtLocation:(NGeoPoint)location title:(NSString *)title type:(NMapPOIflagType)poiFlagType withObject:(id)object;
         [Export("addPOIitemAtLocation:title:type:withObject:")]
-        NMapPOIitem AddPOIitemAtLocation(NGeoPoint location, string title, int poiFlagType, NSObject @object);
+        NMapPOIitem AddPOIitemAtLocation(NGeoPoint location, string title, int poiFlagType, [NullAllowed]NSObject @object);
 
         // -(NMapPOIitem *)addPOIitemAtLocation:(NGeoPoint)location title:(NSString *)title type:(NMapPOIflagType)poiFlagType iconIndex:(int)iconIndex withObject:(id)object;
         [Export("addPOIitemAtLocation:title:type:iconIndex:withObject:")]
-        NMapPOIitem AddPOIitemAtLocation(NGeoPoint location, string title, int poiFlagType, int iconIndex, NSObject @object);
+        NMapPOIitem AddPOIitemAtLocation(NGeoPoint location, string title, int poiFlagType, int iconIndex, [NullAllowed]NSObject @object);
 
         // -(NMapPOIitem *)addPOIitemAtLocationInUtmk:(NPoint)utmk title:(NSString *)title type:(NMapPOIflagType)poiFlagType withObject:(id)object;
         [Export("addPOIitemAtLocationInUtmk:title:type:withObject:")]
-        NMapPOIitem AddPOIitemAtLocationInUtmk(NPoint utmk, string title, int poiFlagType, NSObject @object);
+        NMapPOIitem AddPOIitemAtLocationInUtmk(NPoint utmk, string title, int poiFlagType, [NullAllowed]NSObject @object);
 
         // -(NMapPOIitem *)addPOIitemAtLocationInUtmk:(NPoint)utmk title:(NSString *)title type:(NMapPOIflagType)poiFlagType iconIndex:(int)iconIndex withObject:(id)object;
         [Export("addPOIitemAtLocationInUtmk:title:type:iconIndex:withObject:")]
-        NMapPOIitem AddPOIitemAtLocationInUtmk(NPoint utmk, string title, int poiFlagType, int iconIndex, NSObject @object);
+        NMapPOIitem AddPOIitemAtLocationInUtmk(NPoint utmk, string title, int poiFlagType, int iconIndex, [NullAllowed]NSObject @object);
 
         // -(void)endPOIdata;
         [Export("endPOIdata")]
@@ -985,11 +1047,11 @@ namespace NMapViewerSDK.iOS
 
         // -(NMapPOIitem *)focusedPOIitem;
         [Export("focusedPOIitem")]
-        NMapPOIitem FocusedPOIitem { get; }
+        NMapPOIitem FocusedPOIitem();// { get; }
 
         // -(CGRect)frameOfSelectedPOIitem;
         [Export("frameOfSelectedPOIitem")]
-        CGRect FrameOfSelectedPOIitem { get; }
+        CGRect FrameOfSelectedPOIitem();// { get; }
 
         // -(void)deselctFocusedPOIitem;
         [Export("deselctFocusedPOIitem")]
@@ -1091,26 +1153,26 @@ namespace NMapViewerSDK.iOS
 
         // @optional -(BOOL)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay didChangeSelectedPOIitemAtIndex:(int)index withObject:(id)object;
         [Export("onMapOverlay:didChangeSelectedPOIitemAtIndex:withObject:")]
-        bool OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int index, NSObject @object);
+        bool OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int index, [NullAllowed]NSObject @object);
 
         // @optional -(BOOL)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay didDeselectPOIitemAtIndex:(int)index withObject:(id)object;
         [Export("onMapOverlay:didDeselectPOIitemAtIndex:withObject:")]
         //bool OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int index, NSObject @object);
-        bool OnMapOverlayDidDeselectPOIitemAtIndex(NMapPOIdataOverlay poiDataOverlay, int index, NSObject @object);
+        bool OnMapOverlayDidDeselectPOIitemAtIndex(NMapPOIdataOverlay poiDataOverlay, int index, [NullAllowed]NSObject @object);
 
         // @optional -(BOOL)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay didSelectCalloutOfPOIitemAtIndex:(int)index withObject:(id)object;
         [Export("onMapOverlay:didSelectCalloutOfPOIitemAtIndex:withObject:")]
         //bool OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int index, NSObject @object);
-        bool OnMapOverlayDidSelectCalloutOfPOIitemAtIndex(NMapPOIdataOverlay poiDataOverlay, int index, NSObject @object);
+        bool OnMapOverlayDidSelectCalloutOfPOIitemAtIndex(NMapPOIdataOverlay poiDataOverlay, int index, [NullAllowed]NSObject @object);
 
         // @optional -(BOOL)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay hasCalloutRightAccessoryAtIndex:(int)index withObject:(id)object;
         [Export("onMapOverlay:hasCalloutRightAccessoryAtIndex:withObject:")]
         //bool OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int index, NSObject @object);
-        bool OnMapOverlayHasCalloutRightAccessoryAtIndex(NMapPOIdataOverlay poiDataOverlay, int index, NSObject @object);
+        bool OnMapOverlayHasCalloutRightAccessoryAtIndex(NMapPOIdataOverlay poiDataOverlay, int index, [NullAllowed]NSObject @object);
 
         // @optional -(UIImage *)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay imageForCalloutRightAccessoryAtIndex:(int)index selected:(BOOL)selected withObject:(id)object;
         [Export("onMapOverlay:imageForCalloutRightAccessoryAtIndex:selected:withObject:")]
-        UIImage OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int index, bool selected, NSObject @object);
+        UIImage OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int index, bool selected, [NullAllowed]NSObject @object);
 
         // @optional -(void)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay didChangePOIitemLocationTo:(NGeoPoint)location withType:(NMapPOIflagType)poiFlagType;
         [Export("onMapOverlay:didChangePOIitemLocationTo:withType:")]
@@ -1118,7 +1180,7 @@ namespace NMapViewerSDK.iOS
     }
 
     //Empty NMapPOIdataOverlayDelegate Interface
-    //interface INMapPOIdataOverlayDelegate { }
+    interface INMapPOIdataOverlayDelegate { }
 
     // @interface NMapMyLocationOverlay : NMapPOIdataOverlay
     [BaseType(typeof(NMapPOIdataOverlay))]
@@ -1271,11 +1333,13 @@ namespace NMapViewerSDK.iOS
 
         // -(void)addPathPointLongitude:(double)longitude latitude:(double)latitude lineType:(NMapPathLineType)lineType controlPoint:(BOOL)controlPoint;
         [Export("addPathPointLongitude:latitude:lineType:controlPoint:")]
-        void AddPathPointLongitude(double longitude, double latitude, NMapPathLineType lineType, bool controlPoint);
+        //void AddPathPointLongitude(double longitude, double latitude, NMapPathLineType lineType, bool controlPoint);
+        void AddPathPoint(double longitude, double latitude, NMapPathLineType lineType, bool controlPoint);
 
         // -(void)addPathPointLongitude:(double)longitude latitude:(double)latitude lineType:(NMapPathLineType)lineType;
         [Export("addPathPointLongitude:latitude:lineType:")]
-        void AddPathPointLongitude(double longitude, double latitude, NMapPathLineType lineType);
+        //void AddPathPointLongitude(double longitude, double latitude, NMapPathLineType lineType);
+        void AddPathPoint(double longitude, double latitude, NMapPathLineType lineType);
 
         // -(void)endPathData;
         [Export("endPathData")]
@@ -1421,7 +1485,7 @@ namespace NMapViewerSDK.iOS
 
         // @property (assign, nonatomic) id<NMapViewDelegate,NMapPOIdataOverlayDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        NSObject WeakDelegate { get; set; }
+        INMapViewNPOIdataOverlayDelegate WeakDelegate { get; set; }
 
         // @property (assign, nonatomic) CALayer * overlayLayer;
         [Export("overlayLayer", ArgumentSemantic.Assign)]
@@ -1647,15 +1711,19 @@ namespace NMapViewerSDK.iOS
         NRect ToBoundsInUtmk(NGeoRect bounds);
 
         // -(NGeoRect)screenBounds;
-        [Static, Export("screenBounds")]
-        NGeoRect ScreenBounds { get; }
+        //[Static, Export("screenBounds")]
+        //NGeoRect ScreenBounds { get; }
+        [Export("screenBounds")]
+        NGeoRect ScreenBounds();
 
         // -(NRect)screenBoundsInUtmk;
-        [Static, Export("screenBoundsInUtmk")]
-        NRect ScreenBoundsInUtmk { get; }
+        //[Static, Export("screenBoundsInUtmk")]
+        //NRect ScreenBoundsInUtmk { get; }
+        [Export("screenBoundsInUtmk")]
+        NRect ScreenBoundsInUtmk();
 
         // -(NGeoRect)screenBoundsBy:(double)areaRatio;
-        [Static, Export("screenBoundsBy:")]
+        [Export("screenBoundsBy:")]
         NGeoRect ScreenBoundsBy(double areaRatio);
 
         // -(void)setViewPortSize:(CGSize)size;
@@ -1667,8 +1735,10 @@ namespace NMapViewerSDK.iOS
         NSize ToSizeInViewPort(NSize size);
 
         // -(BOOL)isProjectionScaled;
-        [Static, Export("isProjectionScaled")]
-        bool IsProjectionScaled { get; }
+        //[Static, Export("isProjectionScaled")]
+        //bool IsProjectionScaled { get; }
+        [Export("isProjectionScaled")]
+        bool IsProjectionScaled();
 
         // -(CGPoint)toMapPointFromViewPortOffset:(CGPoint)offset;
         [Export("toMapPointFromViewPortOffset:")]
@@ -1711,39 +1781,42 @@ namespace NMapViewerSDK.iOS
         [Export("isPanAnimating")]
         bool IsPanAnimating { get; set; }
 
-        // @property (assign, nonatomic) BOOL mapViewAlphaLayerMode;
-        [Export("mapViewAlphaLayerMode")]
-        bool MapViewAlphaLayerMode { get; set; }
+        //not exists in NMapViewerSDK 2.1.1 Version
+        //// @property (assign, nonatomic) BOOL mapViewAlphaLayerMode;
+        //[Export("mapViewAlphaLayerMode")]
+        //bool MapViewAlphaLayerMode { get; set; }
 
-        // -(void)setMapViewAlphaLayerMode:(BOOL)mode withColor:(UIColor * _Nonnull)color;
-        [Export("setMapViewAlphaLayerMode:withColor:")]
-        void SetMapViewAlphaLayerMode(bool mode, UIColor color);
+        //// -(void)setMapViewAlphaLayerMode:(BOOL)mode withColor:(UIColor * _Nonnull)color;
+        //[Export("setMapViewAlphaLayerMode:withColor:")]
+        //void SetMapViewAlphaLayerModeWithColor(bool mode, UIColor color);
     }
 
-
-    interface ICAAnimationDelegate { }
 
     // @interface NMapView : NMapViewQuartz <CAAnimationDelegate>
     //[BaseType(typeof(NMapViewQuartz),
     //Delegates = new string[] { "WeakDelegate" },
-    //Events = new Type[] { typeof(CAAnimationDelegate) })]
+    //Events = new Type[] { typeof(INMapViewNPOIdataOverlayDelegate) })]
     [BaseType(typeof(NMapViewQuartz))]
-    interface NMapView : ICAAnimationDelegate
+    interface NMapView 
     {
+        //add Constructor : initWithFrame
+        [Export("initWithFrame:")]
+        IntPtr Constructor(CGRect frame);
+
         [Wrap("WeakDelegate")]
         //NSObject<NMapViewDelegate, NMapPOIdataOverlayDelegate> Delegate { get; set; }
         INMapViewNPOIdataOverlayDelegate Delegate { get; set; }
 
         // @property (assign, nonatomic) id<NMapViewDelegate,NMapPOIdataOverlayDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        NSObject WeakDelegate { get; set; }
+        INMapViewNPOIdataOverlayDelegate WeakDelegate { get; set; }
 
         [Wrap("WeakReverseGeocoderDelegate")]
-        MMapReverseGeocoderDelegate ReverseGeocoderDelegate { get; set; }
+        IMMapReverseGeocoderDelegate ReverseGeocoderDelegate { get; set; }
 
         // @property (assign, nonatomic) id<MMapReverseGeocoderDelegate> reverseGeocoderDelegate;
         [NullAllowed, Export("reverseGeocoderDelegate", ArgumentSemantic.Assign)]
-        NSObject WeakReverseGeocoderDelegate { get; set; }
+        IMMapReverseGeocoderDelegate WeakReverseGeocoderDelegate { get; set; }
 
         // @property (readonly, nonatomic) NMapOverlayManager * mapOverlayManager;
         [Export("mapOverlayManager")]
@@ -1770,12 +1843,12 @@ namespace NMapViewerSDK.iOS
         void SetMapCenterAfterInitFinished(NSObject ignore);
 
         // +(BOOL)isValidLongitude:(double)lon latitude:(double)lat;
-        [Static]
+        //[Static]
         [Export("isValidLongitude:latitude:")]
         bool IsValidLongitude(double lon, double lat);
 
         // +(double)distanceFromLocation:(NGeoPoint)fromLocation toLocation:(NGeoPoint)toLocation;
-        [Static]
+        //[Static]
         [Export("distanceFromLocation:toLocation:")]
         double DistanceFromLocation(NGeoPoint fromLocation, NGeoPoint toLocation);
 
@@ -1846,6 +1919,11 @@ namespace NMapViewerSDK.iOS
         // -(void)viewWillResignActive;
         [Export("viewWillResignActive")]
         void ViewWillResignActive();
+
+        // @interface NMapViewRotation (NMapView)
+        // @property (getter = isAutoRotateEnabled, nonatomic) BOOL autoRotateEnabled;
+        [Export("autoRotateEnabled")]
+        bool AutoRotateEnabled { [Bind("isAutoRotateEnabled")]get; set; }
     }
 
     // @interface NMapViewRotation (NMapView)
@@ -1854,12 +1932,23 @@ namespace NMapViewerSDK.iOS
     interface NMapView_NMapViewRotation
     {
         // @property (getter = isAutoRotateEnabled, nonatomic) BOOL autoRotateEnabled;
-        [Static, Export("autoRotateEnabled")]
-        bool AutoRotateEnabled { [Bind("isAutoRotateEnabled")] get; set; }
+        //[Static, Export("autoRotateEnabled")]
+        //bool AutoRotateEnabled { [Bind("isAutoRotateEnabled")] get; set; }
+        //[Export("isAutoRotateEnabled")]
+        //bool IsAutoRotateEnabled();
+
+        //[Internal]
+        //[Export("setAutoRotateEnabled:")]
+        //void _SetAutoRotateEnabled(bool isAutoRotateEnabled);
 
         // @property (nonatomic) CGFloat rotateAngle;
-        [Static, Export("rotateAngle")]
-        nfloat RotateAngle { get; set; }
+        //[Static, Export("rotateAngle")]
+        //nfloat RotateAngle { get; set; }
+        [Export("rotateAngle")]
+        nfloat RotateAngle();
+
+        [Export("setRotateAngle:")]
+        void SetRotateAngle(nfloat degree);
 
         // -(void)setAutoRotateEnabled:(BOOL)enabled animate:(BOOL)animate;
         [Export("setAutoRotateEnabled:animate:")]
@@ -2007,107 +2096,29 @@ namespace NMapViewerSDK.iOS
     }
 
     //Empty NMapViewDelete Interface
-    //interface INMapViewDelegate{}
+    interface INMapViewDelegate{}
 
     [Protocol, Model, Preserve]
     [BaseType(typeof(NSObject))]
-    interface INMapViewNPOIdataOverlayDelegate : NMapViewDelegate, NMapPOIdataOverlayDelegate
+    interface NMapViewNPOIdataOverlayDelegate : NMapViewDelegate, NMapPOIdataOverlayDelegate
     {
-        // @required -(void)onMapView:(NMapView *)mapView initHandler:(NMapError *)error;
-        //[Abstract]
-        [Export("onMapView:initHandler:")]
-        void OnMapView(NMapView mapView, NMapError error);
 
-        //[Abstract]
-        [Export("onMapOverlay:imageForOverlayItem:selected:")]
-        UIImage OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, NMapPOIitem poiItem, bool selected);
-
-        // @required -(CGPoint)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay anchorPointWithType:(NMapPOIflagType)poiFlagType;
-        //[Abstract]
-        [Export("onMapOverlay:anchorPointWithType:")]
-        CGPoint OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int poiFlagType);
-
-        // @required -(UIImage *)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay imageForCalloutOverlayItem:(NMapPOIitem *)poiItem constraintSize:(CGSize)constraintSize selected:(BOOL)selected imageForCalloutRightAccessory:(UIImage *)imageForCalloutRightAccessory calloutPosition:(CGPoint *)calloutPosition calloutHitRect:(CGRect *)calloutHitRect;
-        //[Abstract]
-        [Export("onMapOverlay:imageForCalloutOverlayItem:constraintSize:selected:imageForCalloutRightAccessory:calloutPosition:calloutHitRect:")]
-        //unsafe UIImage OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, NMapPOIitem poiItem, CGSize constraintSize, bool selected, UIImage imageForCalloutRightAccessory, CGPoint* calloutPosition, CGRect* calloutHitRect);
-        UIImage OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, NMapPOIitem poiItem, CGSize constraintSize, bool selected, UIImage imageForCalloutRightAccessory, CGPoint calloutPosition, CGRect calloutHitRect);
-
-        // @required -(CGPoint)onMapOverlay:(NMapPOIdataOverlay *)poiDataOverlay calloutOffsetWithType:(NMapPOIflagType)poiFlagType;
-        //[Abstract]
-        [Export("onMapOverlay:calloutOffsetWithType:")]
-        //CGPoint OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int poiFlagType);
-        CGPoint OnMapOverlayCalloutOffsetWithType(NMapPOIdataOverlay poiDataOverlay, int poiFlagType);
     }
+
+    //Empty NMapViewNPOIdataOverlayDelegate Interface
+    interface INMapViewNPOIdataOverlayDelegate{}
+
 
     [Static]
     //[Verify(ConstantsInterfaceAssociation)]
     partial interface Constants
     {
-        // extern double NMapViewerSDKVersionNumber;
-        //[Field("NMapViewerSDKVersionNumber", "__Internal")]
-        //double NMapViewerSDKVersionNumber { get; }
+        //extern double NMapViewerSDKVersionNumber;
+        [Field("NMapViewerSDKVersionNumber", "__Internal")]
+        double NMapViewerSDKVersionNumber { get; }
 
-        //// extern const unsigned char [] NMapViewerSDKVersionString;
-        //[Field("NMapViewerSDKVersionString", "__Internal")]
-        //NSString NMapViewerSDKVersionString { get; }
+        // extern const unsigned char [] NMapViewerSDKVersionString;
+        [Field("NMapViewerSDKVersionString", "__Internal")]
+        NSString NMapViewerSDKVersionString { get; }
     }
-
-
-
-    #region ApiGatewayMac
-
-    //// @interface NMacCommonManager : NSObject
-    //[BaseType(typeof(NSObject))]
-    //interface NMacCommonManager
-    //{
-    //    // +(void)setBundleClass:(Class)bundleClass;
-    //    [Static]
-    //    [Export("setBundleClass:")]
-    //    void SetBundleClass(Class bundleClass);
-
-    //    // +(Class)getBundleClass;
-    //    [Static]
-    //    [Export("getBundleClass")]
-    //    //[Verify(MethodToProperty)]
-    //    Class BundleClass { get; }
-    //}
-
-    //// @interface NMacManager : NMacCommonManager
-    //[BaseType(typeof(NMacCommonManager))]
-    //[Protocol]
-    //interface NMacManager
-    //{
-    //    // +(void)setServiceId:(NSString *)serviceId;
-    //    [Static]
-    //    [Export("setServiceId:")]
-    //    void SetServiceId(string serviceId);
-
-    //    // +(void)setServiceKey:(NSString *)key;
-    //    [Static]
-    //    [Export("setServiceKey:")]
-    //    void SetServiceKey(string key);
-
-    //    // +(NSString *)encryptUrl:(NSString *)url;
-    //    [Static]
-    //    [Export("encryptUrl:")]
-    //    string EncryptUrl(string url);
-
-    //    // +(NSString *)encryptUrl:(NSString *)url key:(NSString *)key;
-    //    [Static]
-    //    [Export("encryptUrl:key:")]
-    //    string EncryptUrl(string url, string key);
-
-    //    // +(void)adjustLocalTimeToServerTime:(id)target selector:(SEL)selector;
-    //    [Static]
-    //    [Export("adjustLocalTimeToServerTime:selector:")]
-    //    void AdjustLocalTimeToServerTime(NSObject target, Selector selector);
-
-    //    // +(Boolean)adjustLocalTimeToServerTime;
-    //    [Static]
-    //    [Export("adjustLocalTimeToServerTime")]
-    //    //[Verify(MethodToProperty)]
-    //    bool AdjustLocalTimeToServerTime(); //{ get; }
-    //}
-    #endregion
 }

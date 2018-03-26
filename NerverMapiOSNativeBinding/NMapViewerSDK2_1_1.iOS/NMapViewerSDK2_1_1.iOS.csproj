@@ -35,6 +35,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NMapViewerSDK.framework.linkwith.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Messaging.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />

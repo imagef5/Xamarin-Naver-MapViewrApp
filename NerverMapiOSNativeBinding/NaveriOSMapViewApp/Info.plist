@@ -41,7 +41,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>LSApplicationCategoryType</key>
-	<string>NSLocationWhenInUseUsageDescription</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>사용중 위치 정보를 사용하고 싶어요. 허락해 주세요~~</string>
 </dict>
 </plist>

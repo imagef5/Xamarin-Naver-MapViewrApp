@@ -7,25 +7,25 @@ namespace NMapViewerSDK.iOS
     [StructLayout (LayoutKind.Sequential)]
     public struct NGPoint
     {
-        public float x;
+        public float X;
 
-        public float y;
+        public float Y;
     }
 
     [StructLayout (LayoutKind.Sequential)]
     public struct NGSize
     {
-        public float width;
+        public float Width;
 
-        public float height;
+        public float Height;
     }
 
     [StructLayout (LayoutKind.Sequential)]
     public struct NGRect
     {
-        public NGPoint origin;
+        public NGPoint Origin;
 
-        public NGSize size;
+        public NGSize Size;
     }
 
     static class CFunctions
@@ -49,49 +49,49 @@ namespace NMapViewerSDK.iOS
     [StructLayout (LayoutKind.Sequential)]
     public struct NGeoPoint
     {
-        public double longitude;
+        public double Longitude;
 
-        public double latitude;
+        public double Latitude;
     }
 
     [StructLayout (LayoutKind.Sequential)]
     public struct NGeoRect
     {
-        public double left;
+        public double Left;
 
-        public double top;
+        public double Top;
 
-        public double right;
+        public double Right;
 
-        public double bottom;
+        public double Bottom;
     }
 
     [StructLayout (LayoutKind.Sequential)]
     public struct NPoint
     {
-        public int x;
+        public int X;
 
-        public int y;
+        public int Y;
     }
 
     [StructLayout (LayoutKind.Sequential)]
     public struct NSize
     {
-        public int width;
+        public int Width;
 
-        public int height;
+        public int Height;
     }
 
     [StructLayout (LayoutKind.Sequential)]
     public struct NRect
     {
-        public int left;
+        public int Left;
 
-        public int top;
+        public int Top;
 
-        public int right;
+        public int Right;
 
-        public int bottom;
+        public int Bottom;
     }
 
     [Native]
@@ -105,8 +105,8 @@ namespace NMapViewerSDK.iOS
     [Native]
     public enum NMapPathDataType : ulong//: nint
     {
-        line,
-        gon
+        Line,
+        Polygon,
     }
 
     [Native]

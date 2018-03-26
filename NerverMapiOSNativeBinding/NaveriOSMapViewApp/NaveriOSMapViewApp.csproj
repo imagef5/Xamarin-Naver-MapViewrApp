@@ -23,7 +23,7 @@
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>27312</IOSDebuggerPort>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
@@ -88,13 +88,50 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\1px_dot.imageset\1px_dot.png" />
+    <ImageAsset Include="Assets.xcassets\1px_dot.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\v4_btn_navi_location_normal.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_angle.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_angle.imageset\ic_angle%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_redo_36pt.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_redo_36pt.imageset\ic_redo_36pt.png" />
+    <ImageAsset Include="Assets.xcassets\ic_redo_36pt.imageset\ic_redo_36pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_redo_36pt.imageset\ic_redo_36pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_undo_36pt.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_undo_36pt.imageset\ic_undo_36pt.png" />
+    <ImageAsset Include="Assets.xcassets\ic_undo_36pt.imageset\ic_undo_36pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_undo_36pt.imageset\ic_undo_36pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_exact_default.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_exact_default.imageset\pubtrans_exact_default%402x.png" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_exact_selected.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_exact_selected.imageset\pubtrans_exact_selected.png" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_ic_mylocation_off.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_ic_mylocation_off.imageset\pubtrans_ic_mylocation_off%402x.png" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_ic_mylocation_on.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pubtrans_ic_mylocation_on.imageset\pubtrans_ic_mylocation_on%402x.png" />
+    <ImageAsset Include="Assets.xcassets\v4_btn_navi_location_my.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\v4_btn_navi_location_my.imageset\v4_btn_navi_location_my%402x.png" />
+    <ImageAsset Include="Assets.xcassets\v4_btn_navi_location_selected.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\v4_btn_navi_location_selected.imageset\v4_btn_navi_location_selected%402x.png" />
+    <ImageAsset Include="Assets.xcassets\v4_tooltip_distance1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\v4_tooltip_distance1.imageset\v4_tooltip_distance1%402x.png" />
+    <ImageAsset Include="Assets.xcassets\v4_tooltip_distance2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\v4_tooltip_distance2.imageset\v4_tooltip_distance2%402x.png" />
+    <ImageAsset Include="Assets.xcassets\v4_btn_navi_location_normal.imageset\v4_btn_navi_location_normal%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Samples\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Samples\LocationMapViewController.xib" />
+    <InterfaceDefinition Include="Samples\ReverseGeocoderViewController.xib" />
+    <InterfaceDefinition Include="Samples\MovableMarkerViewController.xib" />
+    <InterfaceDefinition Include="Samples\PolylinesViewController.xib" />
+    <InterfaceDefinition Include="Samples\PolygonsViewController.xib" />
+    <InterfaceDefinition Include="Samples\CirclesViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -108,6 +145,47 @@
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="AppSetting.cs" />
+    <Compile Include="MainViewController.cs" />
+    <Compile Include="MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\MapViewController.cs" />
+    <Compile Include="Samples\MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\NMapViewResource.cs" />
+    <Compile Include="Samples\LocationMapViewController.cs" />
+    <Compile Include="Samples\LocationMapViewController.designer.cs">
+      <DependentUpon>LocationMapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ReverseGeocoderViewController.cs" />
+    <Compile Include="Samples\ReverseGeocoderViewController.designer.cs">
+      <DependentUpon>ReverseGeocoderViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\CustomMarkersMapViewController.cs" />
+    <Compile Include="Samples\CustomMarkersMapViewController.designer.cs">
+      <DependentUpon>CustomMarkersMapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\MovableMarkerViewController.cs" />
+    <Compile Include="Samples\MovableMarkerViewController.designer.cs">
+      <DependentUpon>MovableMarkerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PolylinesViewController.cs" />
+    <Compile Include="Samples\PolylinesViewController.designer.cs">
+      <DependentUpon>PolylinesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PolygonsViewController.cs" />
+    <Compile Include="Samples\PolygonsViewController.designer.cs">
+      <DependentUpon>PolygonsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\CirclesViewController.cs" />
+    <Compile Include="Samples\CirclesViewController.designer.cs">
+      <DependentUpon>CirclesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\RotationViewController.cs" />
+    <Compile Include="Samples\RotationViewController.designer.cs">
+      <DependentUpon>RotationViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NMapViewerSDK2_1_1.iOS\NMapViewerSDK2_1_1.iOS.csproj">
