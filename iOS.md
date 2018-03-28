@@ -45,8 +45,13 @@
  7. iOS 용 App 프로젝트 생성 ->  Native Binding 프로젝트 참조 
   ``` 
   코드 예제
+  AppSetting.cs 파일에 Client_ID 수정
+   public class AppSetting
+    {
+        public const string CLIENT_ID = "YOUR_CLIENT_ID"; <- Naver API에서 신청후 생성된 Client ID 를 변경해 줌!
+    }
   
-  using NMapViewerSDK.iOS;
+  using NMapViewerSDK.iOS;
   ...
             mapView = new NMapView(View.Frame)
             {
