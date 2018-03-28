@@ -159,6 +159,15 @@
     <Folder Include="Resources\menu\" />
     <Folder Include="Resources\values\" />
     <Folder Include="Resources\values-v11\" />
+    <AndroidResource Include="Resources\menu\menu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\color\" />
+    <Folder Include="Resources\values\" />
+    <Folder Include="Resources\menu\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NMapViewerSDK.Android\NMapViewerSDK.Android.csproj">
