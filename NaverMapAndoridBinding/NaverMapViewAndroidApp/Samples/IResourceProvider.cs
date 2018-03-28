@@ -19,37 +19,19 @@
  * limitations under the License.
  */
 
-using System;
-using Android.App;
-using Android.OS;
-using Android.Runtime;
-using Android.Support.V4.App;
+using Android.Graphics.Drawables;
 using Com.Nhn.Android.Maps;
 
 namespace NaverMapViewAndroidApp.Samples
 {
-    [Activity(Label = "Naver Map FragmentActivity", Name = "naver.map.FragmentMapActivity")]
-    public class FragmentMapActivity : FragmentActivity
+    public interface IResourceProvider
     {
-        #region private member fields area
-        NMapView mMapView;
-		#endregion
+        Drawable GetCalloutBackground(NMapOverlayItem item);
 
-		#region override methods area
-		protected override void OnCreate(Bundle savedInstanceState)
-		{
-            base.OnCreate(savedInstanceState);
+        string GetCalloutRightButtonText(NMapOverlayItem item);
 
-            SetContentView(Resource.Layout.Fragments);
-            mMapView = FindViewById<NMapView>(Resource.Id.mapView);
+        Drawable[] GetCalloutRightButton(NMapOverlayItem item);
 
-            // initialize map view
-            mMapView.Clickable = true;
-            mMapView.Enabled = true;
-            mMapView.Focusable = true;
-            mMapView.FocusableInTouchMode = true;
-            mMapView.RequestFocus();
-		}
-		#endregion
-	}
+        Drawable[] GetCalloutRightAccessory(NMapOverlayItem item);
+    }
 }

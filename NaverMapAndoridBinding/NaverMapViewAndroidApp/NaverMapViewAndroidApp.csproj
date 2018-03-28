@@ -84,6 +84,14 @@
     <Compile Include="Samples\Fragment2.cs" />
     <Compile Include="Samples\NMapViewerApplication.cs" />
     <Compile Include="Samples\FragmentMapActivity.cs" />
+    <Compile Include="Samples\NMapPOIflagType.cs" />
+    <Compile Include="Samples\NMapCalloutBasicOverlay.cs" />
+    <Compile Include="Samples\NMapCalloutCustomOldOverlay.cs" />
+    <Compile Include="Samples\IResourceProvider.cs" />
+    <Compile Include="Samples\NMapViewerResourceProvider.cs" />
+    <Compile Include="Samples\NMapCalloutOverlayView.cs" />
+    <Compile Include="Samples\NMapCalloutCustomOverlayView.cs" />
+    <Compile Include="Samples\NMapViewer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -135,11 +143,12 @@
     <AndroidResource Include="Resources\drawable-mdpi\pubtrans_ic_mylocation_off.png" />
     <AndroidResource Include="Resources\drawable-mdpi\pubtrans_ic_mylocation_on.png" />
     <AndroidResource Include="Resources\color\callout_textcolor.xml" />
-    <AndroidResource Include="Resources\menu\menu.xml" />
+    <AndroidResource Include="Resources\menu\menu.axml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values-v11\styles.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -149,6 +158,7 @@
     <Folder Include="Resources\color\" />
     <Folder Include="Resources\menu\" />
     <Folder Include="Resources\values\" />
+    <Folder Include="Resources\values-v11\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NMapViewerSDK.Android\NMapViewerSDK.Android.csproj">

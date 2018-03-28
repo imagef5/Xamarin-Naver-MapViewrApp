@@ -4,13 +4,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <fragment
-        android:name="com.companyname.navermapandroidbinding.Fragment1"
+        class="NaverMapViewAndroidApp.Samples.Fragment1"
         android:id="@+id/fragment1"
         android:layout_weight="1"
         android:layout_width="fill_parent"
         android:layout_height="0dip" />
     <fragment
-        android:name="com.companyname.navermapandroidbinding.Fragment2"
+        class="NaverMapViewAndroidApp.Samples.Fragment2"
         android:id="@+id/fragment2"
         android:layout_weight="1"
         android:layout_width="fill_parent"

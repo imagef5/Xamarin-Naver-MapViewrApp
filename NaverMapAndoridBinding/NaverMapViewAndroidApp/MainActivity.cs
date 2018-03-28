@@ -25,7 +25,7 @@ using Com.Nhn.Android.Maps;
 
 namespace NaverMapViewAndroidApp
 {
-    [Activity(Label = "NaverMapViewAndroidApp", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "NaverMapViewAndroidApp", Icon = "@mipmap/icon")]
     public class MainActivity : NMapActivity //Activity
     {
         private NMapView mMapView;// 지도 화면 View

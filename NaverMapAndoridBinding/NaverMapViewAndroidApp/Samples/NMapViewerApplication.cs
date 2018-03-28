@@ -18,13 +18,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+using System;
 using Android.App;
-
+using Android.Runtime;
 
 namespace NaverMapViewAndroidApp.Samples
 {
+    [Application(Name = "naver.map.NMapViewerApplication")]
     public class NMapViewerApplication : Application
     {
+        public NMapViewerApplication(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        {
+        }
         #region private member fileds area
         static NMapViewerApplication instance;
         #endregion

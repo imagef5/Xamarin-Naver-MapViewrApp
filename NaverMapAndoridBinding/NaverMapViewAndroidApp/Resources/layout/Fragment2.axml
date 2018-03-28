@@ -7,6 +7,6 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="Fragment #2"
+        android:text="Fragment를 이용한 네이버 지도 Sample"
         android:gravity="center" />
 </LinearLayout>
