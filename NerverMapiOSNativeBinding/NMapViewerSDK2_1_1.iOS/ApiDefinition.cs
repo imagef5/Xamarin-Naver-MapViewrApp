@@ -2113,12 +2113,12 @@ namespace NMapViewerSDK.iOS
     //[Verify(ConstantsInterfaceAssociation)]
     partial interface Constants
     {
-        //extern double NMapViewerSDKVersionNumber;
-        [Field("NMapViewerSDKVersionNumber", "__Internal")]
-        double NMapViewerSDKVersionNumber { get; }
+        ////extern double NMapViewerSDKVersionNumber;
+        //[Field("NMapViewerSDKVersionNumber", "__Internal")]
+        //double NMapViewerSDKVersionNumber { get; }
 
-        // extern const unsigned char [] NMapViewerSDKVersionString;
-        [Field("NMapViewerSDKVersionString", "__Internal")]
-        NSString NMapViewerSDKVersionString { get; }
+        //// extern const unsigned char [] NMapViewerSDKVersionString;
+        //[Field("NMapViewerSDKVersionString", "__Internal")]
+        //NSString NMapViewerSDKVersionString { get; }
     }
 }
