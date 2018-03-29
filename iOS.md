@@ -16,9 +16,13 @@
   ```
   sharpie bind -output TempBinding -namespace NMapViewerSDK -framework NMapViewerSDK.framework -sdk iphoneos10.2 -scope NMapViewerSDK.framework/Versions/A/Headers NMapViewerSDK.framework/Versions/A/Headers/*.h -c 
   ```
- - (sharpie 를 실행하면 다음과 같은 화면이 보이더라도 당황화지 마세요!!)
+ - (sharpie 를 실행하면 다음과 같은 화면이 보이더라도 당황화지 마세요!!)<br/>
  
-  ![sharpie result](https://github.com/imagef5/Xamarin-Naver-MapViewrApp/blob/master/screenshot/sharpie_result_screen.png)
+    - ApiDefinitions.cs , StructsAndEnums.cs 파일이 생성확인
+      
+    - Binding Analysis 내용 확인 <- 코드 수정에 대한 가이드
+ 
+  ![sharpie result](https://dongsasubstorage.blob.core.windows.net/images/uploads/sharpie_result_screen.png)
  
 2. Native Binding 프로젝트 생성
 - New Solution -> iOS 라이브러리 -> 바인딩 라이브러리 생성
@@ -29,7 +33,8 @@
 4. sharpie 로 생성하 ApiDefinitions.cs , StructsAndEnums.cs 파일 내용 복사 또는 Drag and Drop로 프로젝트에 파일 추가
 - sharpie로 생성된 파일은 최종 결과 파일이 아니고, [Binging objective-c libraries][5] 등을 참조하여 내용에 맞게 수정해 주어야 함
 
-5. NMapViewerSDK.framework.linkwith.cs(파일명은 상관없음) 파일 추가.<br/> 참조 : [Binging objective-c libraries][5] , [ObjCRuntime.LinkWithAttribute Class][4]
+5. NMapViewerSDK.framework.linkwith.cs(파일명은 상관없음) 파일 추가.<br/> 참조 : [Binging objective-c libraries][5] , [ObjCRuntime.LinkWithAttribute Class][4] 
+
 
   ```
   using ObjCRuntime;
@@ -43,6 +48,13 @@
      
  6. 경우에 따라 추가코드 생성 (예 : Extension.cs)
  7. iOS 용 App 프로젝트 생성 ->  Native Binding 프로젝트 참조 
+ 
+ - 네이버 API 신청시 등록된 iOS Bundle ID 와 Client ID 를 동일하게 설정해 주어야 지도 서비스가 제대로 동작합니다.
+ 
+ info.plist -> Bundle ID
+ 
+ ![번들아이디 등록](https://dongsasubstorage.blob.core.windows.net/images/uploads/bundle_id.png)
+ 
   ``` 
   코드 예제
   AppSetting.cs 파일에 Client_ID 수정
@@ -71,6 +83,19 @@
             mapView.Layer.AddAnimation(new Animation(this), "mapViewAnimation");
   
   ```
+  
+## Screenshot
+![스크린샷1](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_1.png)
+![스크린샷2](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_2.png)
+![스크린샷3](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_3.png)
+![스크린샷4](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_4.png)
+![스크린샷5](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_5.png)
+
+- 말풍선의 경우 화면 좌측으로 붙어서 표시되는 Bug 가 있음(해결하신분 공유부탁드려요~~)
+
+![오류](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_error.png)
+
+- MapView 내의 CGRect 객체를 반환하는 값들에 대해 동일한 오류 증상이 보임(변환과정의 오류인지 , Mono 상의 오류인지 잘 모르겠네요. 이부분도 해결해 하신분 공유 Please~~)
 
 ## Reference
 * [Walkthrough: Binding an iOS Objective-C Library][2]
