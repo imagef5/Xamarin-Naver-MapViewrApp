@@ -27,7 +27,7 @@ using UIKit;
 
 namespace NaveriOSMapViewApp
 {
-    public partial class ReverseGeocoderViewController : UIViewController, INMapViewNPOIdataOverlayDelegate, IMMapReverseGeocoderDelegate
+    public partial class ReverseGeocoderViewController : UIViewController, INMapViewNPOIdataOverlayDelegate//, IMMapReverseGeocoderDelegate
     {
         #region private fields member area
         NMapView mapView;
@@ -55,10 +55,17 @@ namespace NaveriOSMapViewApp
             mapView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
 
             // set delegate to use reverse geocoder API
-            mapView.WeakReverseGeocoderDelegate = this;
+            //WeakReverseGeocoderDelegate 를 직접 구현하는 방식과 
+            //Event를 구현하는 방식 모두 가능
+            //https://docs.microsoft.com/en-us/xamarin/cross-platform/macios/binding/objective-c-libraries?tabs=vsmac#event-handlers-and-callbacks
+            //mapView.WeakReverseGeocoderDelegate = this;
+            mapView.DidFindPlacemark += OnDidFindPlacemark;
+            mapView.DidFailWithError += OnDidFalWithError;
 
             View.AddSubview(mapView);
         }
+
+
 
         public override void DidReceiveMemoryWarning()
         {
@@ -161,7 +168,8 @@ namespace NaveriOSMapViewApp
         }
         #endregion
 
-        #region Implement IMMapReverseGeocoderDelegate
+        #region Implement INMapReverseGeocoderDelegate
+        /*INMapReverseGeocoderDelegate 를 직접 상송받아 구현 하는 경우*/
         public void DidFindPlacemark(NGeoPoint location, NMapPlacemark placemark)
         {
             Debug.Write($"Location({location.Longitude},{location.Latitude}) DidFindPlacemark : {placemark.Address}");
@@ -176,6 +184,28 @@ namespace NaveriOSMapViewApp
         {
             Debug.Write($"Location({location.Longitude},{location.Latitude}) didFailWithError : {error.Description}");
         }
+        /*INMapReverseGeocoderDelegate 를 직접 상송받아 구현 하는 경우*/
+
+        /* 이벤트 방식으로 구현하는 경우 */
+        private void OnDidFindPlacemark(object sender, DidFindPlacemarkEventArgs e)
+        {
+            var location = (NGeoPoint)sender;
+            var placemark = e.Placemark;
+            Debug.Write($"Location({location.Longitude},{location.Latitude}) DidFindPlacemark : {placemark.Address}");
+            Title = placemark.Address;
+            var alert = UIAlertController.Create("ReverseGeocoder", placemark.Address, UIAlertControllerStyle.Alert);
+            var ok = UIAlertAction.Create("OK", UIAlertActionStyle.Default, null);
+            alert.AddAction(ok);
+            this.PresentViewController(alert, true, null);
+        }
+
+        private void OnDidFalWithError(object sender, DidFalWithErrorEventArgs e)
+        {
+            var location = (NGeoPoint)sender;
+            var error = e.Error;
+            Debug.Write($"Location({location.Longitude},{location.Latitude}) didFailWithError : {error.Description}");
+        }
+        /* 이벤트 방식으로 구현하는 경우 */
         #endregion
 
         #region private Methods Area

@@ -172,19 +172,19 @@ namespace NaveriOSMapViewApp
                                                     mapView.SetMapViewBicycleMode(!mapView.GetMapViewBicycleMode());
                                                 }
                                            );
-            //NMapViewerSDK 2.1.1 버전에는 MapViewAlphaLayerMode 가 구현되어 있지 않음.
-            //UIAlertAction alphaAction = UIAlertAction.Create
-            //(
-            // $"Alpha layer is {mapView.MapViewAlphaLayerMode()} ? On : Off",
-            //    UIAlertActionStyle.Default,
-            //    (action) =>
-            //    {
-            //        mapView.SetMapViewAlphaLayerMode(!mapView.MapViewAlphaLayerMode());
-            //    }
-            //);
+            UIAlertAction alphaAction = UIAlertAction.Create
+                                            (
+                                                $"Alpha layer is {mapView.MapViewAlphaLayerMode} ? On : Off",
+                                                UIAlertActionStyle.Default,
+                                                (action) =>
+                                                {
+                                                    mapView.MapViewAlphaLayerMode = !mapView.MapViewAlphaLayerMode;
+                                                }
+                                            );
             alertController.AddAction(trafficAction);
             alertController.AddAction(bicycleAction);
-            //alertController.AddAction(alphaAction);
+            alertController.AddAction(alphaAction);
+            alertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, null));
 
             this.PresentViewController(alertController, true, null);
         }
