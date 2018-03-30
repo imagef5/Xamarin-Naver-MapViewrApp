@@ -27,7 +27,7 @@
  
 2. Native Binding 프로젝트 생성
 - New Solution -> iOS 라이브러리 -> 바인딩 라이브러리 생성
-3. 네이티브 참조 -> 오른쪽 마우스 클릭 -> NMapViewerSDK.framework 참조
+3. 네이티브 참조 -> 오른쪽 마우스 클릭 -> NMapViewerSDK.framework, ApiGatewayMac.framework 참조
 
 ![xamarin ios framework](https://github.com/imagef5/Xamarin-Naver-MapViewrApp/blob/master/screenshot/binging_project.png)
 
