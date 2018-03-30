@@ -61,12 +61,12 @@ namespace NMapViewerSDK.iOS
     {
         // @required -(void)location:(NGeoPoint)location didFindPlacemark:(NMapPlacemark *)placemark;
         [Abstract]
-        [Export("location:didFindPlacemark:")]
+        [Export("location:didFindPlacemark:"), EventArgs("DidFindPlacemark")]
         void DidFindPlacemark(NGeoPoint location, NMapPlacemark placemark);
 
         // @required -(void)location:(NGeoPoint)location didFailWithError:(NMapError *)error;
         [Abstract]
-        [Export("location:didFailWithError:")]
+        [Export("location:didFailWithError:"), EventArgs("DidFalWithError")]
         void DidFailWithError(NGeoPoint location, NMapError error);
     }
 
@@ -1452,7 +1452,10 @@ namespace NMapViewerSDK.iOS
     }
 
     // @interface NMapOverlayManager : NMapOverlay
-    [BaseType(typeof(NMapOverlay))]
+    //[BaseType(typeof(NMapOverlay))]
+    [BaseType(typeof(NMapOverlay),
+    Delegates = new string[] { "WeakDelegate" },
+    Events = new Type[] { typeof(NMapViewNPOIdataOverlayDelegate) })]
     interface NMapOverlayManager
     {
         // @property (readonly, nonatomic) NMapMyLocationOverlay * myLocationOverlay;
@@ -1479,7 +1482,7 @@ namespace NMapViewerSDK.iOS
         [Export("focusedPOIitemHideCallout")]
         bool FocusedPOIitemHideCallout { get; set; }
 
-        [Wrap("WeakDelegate")]
+        [NullAllowed, Wrap("WeakDelegate")]
         //NSObject<NMapViewDelegate, NMapPOIdataOverlayDelegate> Delegate { get; set; }
         INMapViewNPOIdataOverlayDelegate Delegate { get; set; }
 
@@ -1781,29 +1784,28 @@ namespace NMapViewerSDK.iOS
         [Export("isPanAnimating")]
         bool IsPanAnimating { get; set; }
 
-        //not exists in NMapViewerSDK 2.1.1 Version
-        //// @property (assign, nonatomic) BOOL mapViewAlphaLayerMode;
-        //[Export("mapViewAlphaLayerMode")]
-        //bool MapViewAlphaLayerMode { get; set; }
+        // @property (assign, nonatomic) BOOL mapViewAlphaLayerMode;
+        [Export("mapViewAlphaLayerMode")]
+        bool MapViewAlphaLayerMode { get; set; }
 
-        //// -(void)setMapViewAlphaLayerMode:(BOOL)mode withColor:(UIColor * _Nonnull)color;
-        //[Export("setMapViewAlphaLayerMode:withColor:")]
-        //void SetMapViewAlphaLayerModeWithColor(bool mode, UIColor color);
+        // -(void)setMapViewAlphaLayerMode:(BOOL)mode withColor:(UIColor * _Nonnull)color;
+        [Export("setMapViewAlphaLayerMode:withColor:")]
+        void SetMapViewAlphaLayerModeWithColor(bool mode, UIColor color);
     }
 
 
     // @interface NMapView : NMapViewQuartz <CAAnimationDelegate>
-    //[BaseType(typeof(NMapViewQuartz),
-    //Delegates = new string[] { "WeakDelegate" },
-    //Events = new Type[] { typeof(INMapViewNPOIdataOverlayDelegate) })]
-    [BaseType(typeof(NMapViewQuartz))]
-    interface NMapView 
+    [BaseType(typeof(NMapViewQuartz),
+              Delegates = new string[] { "WeakDelegate", "WeakReverseGeocoderDelegate" },
+              Events = new Type[] { typeof(NMapViewNPOIdataOverlayDelegate), typeof(MMapReverseGeocoderDelegate) })]
+    //[BaseType(typeof(NMapViewQuartz))]
+    interface NMapView
     {
         //add Constructor : initWithFrame
         [Export("initWithFrame:")]
         IntPtr Constructor(CGRect frame);
 
-        [Wrap("WeakDelegate")]
+        [NullAllowed, Wrap("WeakDelegate")]
         //NSObject<NMapViewDelegate, NMapPOIdataOverlayDelegate> Delegate { get; set; }
         INMapViewNPOIdataOverlayDelegate Delegate { get; set; }
 
@@ -1811,7 +1813,7 @@ namespace NMapViewerSDK.iOS
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         INMapViewNPOIdataOverlayDelegate WeakDelegate { get; set; }
 
-        [Wrap("WeakReverseGeocoderDelegate")]
+        [NullAllowed, Wrap("WeakReverseGeocoderDelegate")]
         IMMapReverseGeocoderDelegate ReverseGeocoderDelegate { get; set; }
 
         // @property (assign, nonatomic) id<MMapReverseGeocoderDelegate> reverseGeocoderDelegate;
@@ -2096,7 +2098,7 @@ namespace NMapViewerSDK.iOS
     }
 
     //Empty NMapViewDelete Interface
-    interface INMapViewDelegate{}
+    interface INMapViewDelegate { }
 
     [Protocol, Model, Preserve]
     [BaseType(typeof(NSObject))]
@@ -2106,19 +2108,5 @@ namespace NMapViewerSDK.iOS
     }
 
     //Empty NMapViewNPOIdataOverlayDelegate Interface
-    interface INMapViewNPOIdataOverlayDelegate{}
-
-
-    [Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
-    {
-        ////extern double NMapViewerSDKVersionNumber;
-        //[Field("NMapViewerSDKVersionNumber", "__Internal")]
-        //double NMapViewerSDKVersionNumber { get; }
-
-        //// extern const unsigned char [] NMapViewerSDKVersionString;
-        //[Field("NMapViewerSDKVersionString", "__Internal")]
-        //NSString NMapViewerSDKVersionString { get; }
-    }
+    interface INMapViewNPOIdataOverlayDelegate { }
 }

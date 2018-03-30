@@ -28,23 +28,23 @@ namespace NMapViewerSDK.iOS
         public NGSize Size;
     }
 
-    static class CFunctions
-    {
-        // extern NGRect NGRectInsect (NGRect rect, float dx, float dy);
-        [DllImport ("__Internal")]
-        //[Verify (PlatformInvoke)]
-        static extern NGRect NGRectInsect (NGRect rect, float dx, float dy);
+    //static class CFunctions
+    //{
+    //    // extern NGRect NGRectInsect (NGRect rect, float dx, float dy);
+    //    [DllImport ("__Internal")]
+    //    //[Verify (PlatformInvoke)]
+    //    static extern NGRect NGRectInsect (NGRect rect, float dx, float dy);
 
-        // extern int NGRectContainsPoint (NGRect rect, NGPoint pt);
-        [DllImport ("__Internal")]
-        //[Verify (PlatformInvoke)]
-        static extern int NGRectContainsPoint (NGRect rect, NGPoint pt);
+    //    // extern int NGRectContainsPoint (NGRect rect, NGPoint pt);
+    //    [DllImport ("__Internal")]
+    //    //[Verify (PlatformInvoke)]
+    //    static extern int NGRectContainsPoint (NGRect rect, NGPoint pt);
 
-        // extern int NGeoPointIsEquals (NGeoPoint pt1, NGeoPoint pt2);
-        [DllImport ("__Internal")]
-        //[Verify (PlatformInvoke)]
-        static extern int NGeoPointIsEquals (NGeoPoint pt1, NGeoPoint pt2);
-    }
+    //    // extern int NGeoPointIsEquals (NGeoPoint pt1, NGeoPoint pt2);
+    //    [DllImport ("__Internal")]
+    //    //[Verify (PlatformInvoke)]
+    //    static extern int NGeoPointIsEquals (NGeoPoint pt1, NGeoPoint pt2);
+    //}
 
     [StructLayout (LayoutKind.Sequential)]
     public struct NGeoPoint

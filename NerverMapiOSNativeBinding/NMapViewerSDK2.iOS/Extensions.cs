@@ -6,9 +6,7 @@ namespace NMapViewerSDK.iOS
 {
     //public partial class NMapView
     //{
-        
     //    //static readonly IntPtr class_ptr = Class.GetHandle("NMapView");
-
     //    //public bool IsProjectionScaled
     //    //{
     //    //    get
@@ -16,7 +14,6 @@ namespace NMapViewerSDK.iOS
     //    //        return Message.bool_objc_msgSend(Class.GetHandle("NMapView_NMapProjection") , Selector.GetHandle("isProjectionScaled"));
     //    //    } 
     //    //}
-
     //    //public bool AutoRotateEnabled
     //    //{
     //    //    [Export("isAutoRotateEnabled")]
