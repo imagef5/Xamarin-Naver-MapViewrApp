@@ -3,7 +3,8 @@
 ## SDK API 문서 및 다운 로드
 - API 문서 : [문서 참조및 API 신청](https://developers.naver.com/docs/map/ios/) 
 - SDK 다운로드 : [최신(v2.1.3)][0] , [v2.1.1][1] - **NMapViewerSDK.framework**
-> iOS용 최신버전SDK(v2.1.3)의 경우 Native Binding을 통하여 App 을 생성할 경우 런타임시 dll 로딩이 안되는 형상이 발생하여<br/>
+> 2017.3.30 : v2.1.3 버전으로 변경<br/>
+> ~~iOS용 최신버전SDK(v2.1.3)의 경우 Native Binding을 통하여 App 을 생성할 경우 런타임시 dll 로딩이 안되는 형상이 발생하여<br/>
 > 부득이하게 v2.1.1 버전으로 작성함.(혹시 이부분 해결하신분 계시면 내용 공유 부탁드립니다.~~)
 
 ## 프로젝트 구성 
@@ -26,7 +27,7 @@
  
 2. Native Binding 프로젝트 생성
 - New Solution -> iOS 라이브러리 -> 바인딩 라이브러리 생성
-3. 네이티브 참조 -> 오른쪽 마우스 클릭 -> NMapViewerSDK.framework 참조
+3. 네이티브 참조 -> 오른쪽 마우스 클릭 -> NMapViewerSDK.framework, ApiGatewayMac.framework 참조
 
 ![xamarin ios framework](https://github.com/imagef5/Xamarin-Naver-MapViewrApp/blob/master/screenshot/binging_project.png)
 
@@ -37,10 +38,14 @@
 
 
   ```
-  using ObjCRuntime;
+using ObjCRuntime;
 
-  [assembly: LinkWith("NMapViewerSDK.framework",
-                    //Frameworks = "Foundation CoreGraphics CoreLocation QuartzCore UIKit",
+[assembly: LinkWith("NMapViewerSDK.framework",
+                    Frameworks = "ApiGatewayMac",
+                    ForceLoad = true,
+                    LinkerFlags = "-ObjC -lxml2")]
+
+[assembly: LinkWith("ApiGatewayMac.framework",
                     SmartLink = true,
                     ForceLoad = true,
                     LinkerFlags = "-ObjC -lxml2")]
