@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaveriOSMapViewApp", "NaveriOSMapViewApp\NaveriOSMapViewApp.csproj", "{82F71879-8652-4A48-9638-49B6A5309B91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMapViewerSDK2_1_1.iOS", "NMapViewerSDK2_1_1.iOS\NMapViewerSDK2_1_1.iOS.csproj", "{1605D731-34E0-4E55-9583-9C7C27BA7053}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMapViewerSDK2_1_1.iOS", "NMapViewerSDK2.iOS\NMapViewerSDK2.iOS.csproj", "{1605D731-34E0-4E55-9583-9C7C27BA7053}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

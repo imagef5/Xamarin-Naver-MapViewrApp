@@ -188,9 +188,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NMapViewerSDK2_1_1.iOS\NMapViewerSDK2_1_1.iOS.csproj">
+    <ProjectReference Include="..\NMapViewerSDK2.iOS\NMapViewerSDK2.iOS.csproj">
       <Project>{1605D731-34E0-4E55-9583-9C7C27BA7053}</Project>
-      <Name>NMapViewerSDK2_1_1.iOS</Name>
+      <Name>NMapViewerSDK2.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
