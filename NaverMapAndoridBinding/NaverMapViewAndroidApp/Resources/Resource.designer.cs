@@ -549,22 +549,22 @@ namespace NaverMapViewAndroidApp
 		{
 			
 			// aapt resource value: 0x7f040000
-			public const int callout_overlay_view = 2130968576;
+			public const int Callout_Overlay_View = 2130968576;
 			
 			// aapt resource value: 0x7f040001
-			public const int fragment1 = 2130968577;
+			public const int Fragment1 = 2130968577;
 			
 			// aapt resource value: 0x7f040002
-			public const int fragment2 = 2130968578;
+			public const int Fragment2 = 2130968578;
 			
 			// aapt resource value: 0x7f040003
-			public const int fragments = 2130968579;
+			public const int Fragments = 2130968579;
 			
 			// aapt resource value: 0x7f040004
 			public const int Main = 2130968580;
 			
 			// aapt resource value: 0x7f040005
-			public const int map_container = 2130968581;
+			public const int Map_Container = 2130968581;
 			
 			// aapt resource value: 0x7f040006
 			public const int notification_action = 2130968582;
