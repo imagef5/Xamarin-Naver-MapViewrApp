@@ -37,6 +37,17 @@
     <Compile Include="NMapViewerSDK.framework.linkwith.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Messaging.cs" />
+    <Compile Include="Extensions_MapView.cs" />
+    <Compile Include="Extensions_NMapCircleData.cs" />
+    <Compile Include="Extensions_NMapCirclePoint.cs" />
+    <Compile Include="Extensions_NMapController.cs" />
+    <Compile Include="Extensions_NMapMyLocationOverlay.cs" />
+    <Compile Include="Extensions_NMapPathData.cs" />
+    <Compile Include="Extensions_NMapPlacemark.cs" />
+    <Compile Include="Extensions_NMapPOIitem.cs" />
+    <Compile Include="Extensions_NMapProjection.cs" />
+    <Compile Include="Extensions_NMapRadiusSettingOverlay.cs" />
+    <Compile Include="Extensions_NMapViewQuartz.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
