@@ -128,7 +128,7 @@ namespace NaveriOSMapViewApp
             return NMapViewResource.ImageWithType(poiItem.PoiFlagType, selected); ;
         }
 
-        public CGPoint OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int poiFlagType)
+        public CGPoint OnMapOverlayWithType(NMapPOIdataOverlay poiDataOverlay, int poiFlagType)
         {
             return NMapViewResource.AnchorPoint(poiFlagType);
         }
@@ -142,7 +142,7 @@ namespace NaveriOSMapViewApp
             return calloutView;
         }
 
-        public UIImage OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, NMapPOIitem poiItem, CGSize constraintSize, bool selected, UIImage imageForCalloutRightAccessory, CGPoint calloutPosition, CGRect calloutHitRect)
+        public UIImage OnMapOverlayForCalloutOverlayItem(NMapPOIdataOverlay poiDataOverlay, NMapPOIitem poiItem, CGSize constraintSize, bool selected, UIImage imageForCalloutRightAccessory, CGPoint calloutPosition, CGRect calloutHitRect)
         {
             return null;
         }

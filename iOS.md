@@ -100,7 +100,115 @@ using ObjCRuntime;
 
 ![오류](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_error.png)
 
-- MapView 내의 CGRect 객체를 반환하는 값들에 대해 동일한 오류 증상이 보임(변환과정의 오류인지 , Mono 상의 오류인지 잘 모르겠네요. 이부분도 해결해 하신분 공유 Please~~)
+- ~~MapView 내의 CGRect 객체를 반환하는 값들에 대해 동일한 오류 증상이 보임(변환과정의 오류인지 , Mono 상의 오류인지 잘 모르겠네요. 이부분도 해결해 하신분 공유 Please)~~
+- unmanaged struct 를 반환하는 Property 및 Method 의 경우 위와 같은 오류가 발생할 수 있음.
+    - 자동으로 generated 된 Messaging.cs 파일에서 호출하는 함수외에 별도의 추가 Messagins.cs 파일을 만들어 줌(파일명은 중요하지 않음)
+```
+자동 gendrated Messaging.cs 파일 위치 -> [native bindng 프로젝트폴더]/obj/ios/ObjCRuntime/Messaging.cs
+
+예 :
+CGRect 를 반환하는 Method 를 호출하는 경우 다음과 같은 Method를 호출하게 됨.
+이때 CGRect 객체가 struct 타입이기 때문에 위 그림과 같은 오류가 발생
+
+[DllImport(LIBOBJC_DYLIB, EntryPoint = "objc_msgSend")]
+public extern static CGRect CGRect_objc_msgSend(IntPtr receiver, IntPtr selector);
+
+수정하기
+1. Messaging.cs(파일명은 중요하지 않음) 파일 프로젝트에 추가
+
+namespace NMapViewerSDK.iOS
+{
+    internal static class Messaging
+    {
+        const string LIBOBJC_DYLIB = "/usr/lib/libobjc.dylib";
+
+        ....
+
+                  [DllImport(LIBOBJC_DYLIB, EntryPoint = "objc_msgSend")]
+Attribute 추가 ->  [return:MarshalAs(UnmanagedType.Struct)]
+                  public extern static CGRect CGRect_objc_msgSend(IntPtr receiver, IntPtr selector);
+
+        ....
+    }
+}
+
+2. Extensions.cs 파일 추가
+
+    public partial class NMapViewQuartz
+    {
+        public virtual CGRect ViewFrame
+        {
+            [Export("viewFrame")]
+            get
+            {
+                CGRect ret;
+                if (IsDirectBinding)
+                {
+                    if (Runtime.Arch == Arch.DEVICE)
+                    {
+                        if (IntPtr.Size == 8)
+                        {
+                            ret = global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSend(this.Handle, Selector.GetHandle("viewFrame"));  <- 위 Messaging.cs 파일에 추가하 Method 를 호출
+                        }
+                        else
+                        {
+                            global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSend_stret(out ret, this.Handle, Selector.GetHandle("viewFrame"));
+                        }
+                    }
+                    else if (IntPtr.Size == 8)
+                    {
+                        global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSend_stret(out ret, this.Handle, Selector.GetHandle("viewFrame"));
+                    }
+                    else
+                    {
+                        global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSend_stret(out ret, this.Handle, Selector.GetHandle("viewFrame"));
+                    }
+                }
+                else
+                {
+                    if (Runtime.Arch == Arch.DEVICE)
+                    {
+                        if (IntPtr.Size == 8)
+                        {
+                            ret = global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSendSuper(this.SuperHandle, Selector.GetHandle("viewFrame"));
+                        }
+                        else
+                        {
+                            global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSendSuper_stret(out ret, this.SuperHandle, Selector.GetHandle("viewFrame"));
+                        }
+                    }
+                    else if (IntPtr.Size == 8)
+                    {
+                        global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSendSuper_stret(out ret, this.SuperHandle, Selector.GetHandle("viewFrame"));
+                    }
+                    else
+                    {
+                        global::NMapViewerSDK.iOS.Messaging.CGRect_objc_msgSendSuper_stret(out ret, this.SuperHandle, Selector.GetHandle("viewFrame"));
+                    }
+                }
+                return ret;
+            }
+
+        }
+
+        ....
+    }
+
+3. ApiDefinitions.cs 에 정의되어 있는 ViewFrame Property 를 주석 처리
+
+    [BaseType(typeof(UIView))]
+    interface NMapViewQuartz
+    {
+      ....
+        //[Export("viewFrame")]
+        //CGRect ViewFrame { get; }
+
+      ....
+    }
+
+```
+![struct반환](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_struct_success.png)
+- 제대로된 값을 반환함
 
 ## Reference
 * [Walkthrough: Binding an iOS Objective-C Library][2]

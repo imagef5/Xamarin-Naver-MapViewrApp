@@ -86,12 +86,12 @@ namespace NaveriOSMapViewApp
             return null;
         }
 
-        public CGPoint OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, int poiFlagType)
+        public CGPoint OnMapOverlayWithType(NMapPOIdataOverlay poiDataOverlay, int poiFlagType)
         {
             return CGPoint.Empty;
         }
 
-        public UIImage OnMapOverlay(NMapPOIdataOverlay poiDataOverlay, NMapPOIitem poiItem, CGSize constraintSize, bool selected, UIImage imageForCalloutRightAccessory, CGPoint calloutPosition, CGRect calloutHitRect)
+        public UIImage OnMapOverlayForCalloutOverlayItem(NMapPOIdataOverlay poiDataOverlay, NMapPOIitem poiItem, CGSize constraintSize, bool selected, UIImage imageForCalloutRightAccessory, CGPoint calloutPosition, CGRect calloutHitRect)
         {
             return null;
         }
