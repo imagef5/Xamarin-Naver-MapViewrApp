@@ -200,6 +200,7 @@ Attribute 추가 ->  [return:MarshalAs(UnmanagedType.Struct)]
     interface NMapViewQuartz
     {
       ....
+      
         //[Export("viewFrame")]
         //CGRect ViewFrame { get; }
 
