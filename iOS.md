@@ -101,8 +101,9 @@ using ObjCRuntime;
 ![오류](https://dongsasubstorage.blob.core.windows.net/images/uploads/naver_map_ios_error.png)
 
 - ~~MapView 내의 CGRect 객체를 반환하는 값들에 대해 동일한 오류 증상이 보임(변환과정의 오류인지 , Mono 상의 오류인지 잘 모르겠네요. 이부분도 해결해 하신분 공유 Please)~~
-- unmanaged struct 를 반환하는 Property 및 Method 의 경우 위와 같은 오류가 발생할 수 있음.
-    - 자동으로 generated 된 Messaging.cs 파일에서 호출하는 함수외에 별도의 추가 Messagins.cs 파일을 만들어 줌(다른 파일명도 가능)
+- unmanaged struct 를 반환하는 Property 및 Method 의 경우 위와 같은 오류가 발생할 수 있음.<br/>
+      - 자동으로 generated 된 Messaging.cs 파일에서 호출하는 함수외에 별도의 추가 Messagins.cs 파일을 만들어 줌<br/>
+      - 참조 : [네이티브 라이브러리와의 상호 운영성:모노](http://www.mono-project.com/docs/advanced/pinvoke)
 ```
 자동 gendrated Messaging.cs 파일 위치 -> [native bindng 프로젝트폴더]/obj/ios/ObjCRuntime/Messaging.cs
 
@@ -114,7 +115,7 @@ CGRect 를 반환하는 Method 를 호출하는 경우 다음과 같은 Method�
 public extern static CGRect CGRect_objc_msgSend(IntPtr receiver, IntPtr selector);
 
 수정하기
-1. Messaging.cs(다른 파일명도 가능) 파일 프로젝트에 추가
+1. Messaging.cs 파일 프로젝트에 추가
 
 namespace NMapViewerSDK.iOS
 {
